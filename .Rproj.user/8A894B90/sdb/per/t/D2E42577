@@ -1,0 +1,15 @@
+{
+    "contents" : "learning <- function(object) UseMethod(\"learning\")\n\nlearning.default <- function(object) \"Learning Default\"\n\nlearning.LearnMMHC<- function(object) {\n\t\n\tdfPop <- convert.factor(object@popMatrix);\n\n\tlearnedBN <- mmhc(dfPop);\n\t\n\tlearnedBN;\n}\n\nlearning.LearnRSMAX2<- function(object) {\n  \n \n  dfPop <- convert.factor(object@popMatrix);\n\n  learnedBN <- rsmax2(x = dfPop, maximize = object@maximize, restrict = object@restrict);\n\t\n\tlearnedBN;\n}",
+    "created" : 1363980919546.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2936838293",
+    "id" : "D2E42577",
+    "lastKnownWriteTime" : 1363988509,
+    "path" : "D:/REDA/Functions/LearningFunction.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

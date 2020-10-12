@@ -1,0 +1,15 @@
+{
+    "contents" : "\nexecute <- function(eda) UseMethod(\"execute\")\n\nexecute.default <- function(eda) \"Run default\"\n\nexecute.EDA <- function(eda) {\n\t\n\tpopulation<-eda@population\n\n\tfor (iter in 1:eda@stopCondition@iterations) {\n\t\n\t\tselPop <- selection(eda@selectionOperator);\n\t\t\n\t\teda@samplingOperator@populationSelected <- selPop;\n       \n\t\tif(eda@learningOperator@default == FALSE){\n\t\t\n\t\t\teda@learningOperator@popMatrix <- selPop; \n\t\t\t\n\t\t\tlearning <- learning(eda@learningOperator)\n\t\t\n\t\t\tnewMatrixPop <- sampling(eda@samplingOperator,learning);\n\t\t\n\t\t\t\n\t\t}else{\n\t\t\t\n\t\t\tnewMatrixPop <- sampling(eda@samplingOperator);\n\t\t\t\n\t\t}\n\t\t\n\t\t\n\t\t\n    \t\teda@evaluateOperator@population  = convert.numeric(newMatrixPop);\n\t\tfitness <- evaluate(eda@evaluateOperator);\n\n\t\tnewPopulation <- new(\"Population\",populationmatrix=as.matrix(newMatrixPop),fitness=fitness)\n\t\teda@stopCondition@population <- newPopulation;\n\t\n\t\t\n\t\tstatistics(newPopulation,iter);\t\n\n\t\tif (stop(eda@stopCondition))\n\t\t\tbreak;\n\t\t\n\t\teda@selectionOperator@population <- newPopulation;\n\t\t\n\t\t\n\t}\n\t\n\n\t\n}\n\t\t\n",
+    "created" : 1363983795359.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3585127620",
+    "id" : "F2404735",
+    "lastKnownWriteTime" : 1363988084,
+    "path" : "D:/REDA/Functions/ExecuteEDA.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
